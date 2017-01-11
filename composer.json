@@ -1,23 +1,33 @@
 {
-    "name": "mrcoco/vokuro-cms",
-    "type": "vokuro-module",
-    "version": "0.1.12",
-    "title": "Vokuro CMS",
-    "description": "Vokuro CMS - open source PHP Content 
-Management build on Vokuro modular .",
-    "type": "project",
-    "keywords": [
+  "name": "mrcoco/vokuro-cms",
+  "version": "0.1.12",
+  "title": "Vokuro CMS",
+  "description": "Vokuro CMS - open source PHP CMS. build for vokuro-modular .",
+  "type": "vokuro-module",
+  "keywords": [
     "phalcon",
     "modules",
     "modular",
     "php"
-    ],
+  ],
   "homepage": "http://cempakaweb.com/",
   "author": {
     "name": "Dwi Agus Purwanto",
     "url": "https://www.facebook.com/ghaouts"
   },
-    "require": {
-        "composer/installers": "~1.0"
+  "maintainers": [
+    {
+      "name": "Dwi Agus Purwanto",
+      "url": "https://www.facebook.com/ghaouts"
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrcoco/vokuro-cms"
+  },
+  "bugs": "https://github.com/mrcoco/vokuro-cms/issues",
+  "license": "BSD-3",
+  "require": {
+    "composer/installers": "~1.0"
+  }
 }
