@@ -1,0 +1,7 @@
+{
+    "name": "mrcoco/vokuro-cms",
+    "type": "vokuro-module",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
