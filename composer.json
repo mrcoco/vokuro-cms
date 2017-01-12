@@ -3,7 +3,7 @@
   "version": "0.1.12",
   "title": "Vokuro CMS",
   "description": "Vokuro CMS - open source PHP CMS. build for vokuro-modular .",
-  "type": "vokuro-module",
+  "type": "library",
   "keywords": [
     "phalcon",
     "modules",
