@@ -29,5 +29,10 @@
   "license": "BSD-3",
   "require": {
     "composer/installers": "~1.0"
-  }
+  },
+  "extra": {
+        "installer-paths": {
+            "modules/{$name}": ["mrcoco/vokuro-cms"]
+        }
+    }
 }
