@@ -14,5 +14,14 @@ use Vokuro\Controllers\ControllerBase;
 
 class PageController extends ControllerBase
 {
+    public function initialize()
+    {
 
+    }
+
+    public function indexAction()
+    {
+        $this->view->grid = "grid";
+        $this->view->pick("pageIndex");
+    }
 }
