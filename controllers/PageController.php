@@ -24,4 +24,9 @@ class PageController extends ControllerBase
         $this->view->grid = "grid";
         $this->view->pick("pageIndex");
     }
+
+    public function listAction()
+    {
+        $this->view->disable();
+    }
 }
