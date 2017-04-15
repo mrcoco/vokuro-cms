@@ -3,7 +3,7 @@
         $('textarea').trumbowyg();
         var grid = $("#grid-selection").bootgrid({
             ajax: true,
-            url: "{{ url("admin/pages/list") }}",
+            url: "{{ url("page/list") }}",
             selection: true,
             multiSelect: true,
             formatters: {
@@ -44,7 +44,7 @@
 
             }).end().find(".command-delete").on("click", function(e)
             {
-                $.get( "{{ url('admin/pages/delete/') }}"+ $(this).data("row-id"), function( data ) {
+                $.get( "{{ url('page/delete/') }}"+ $(this).data("row-id"), function( data ) {
                     myAlert(data);
                     $("#grid-selection").bootgrid("reload");
                 });
@@ -59,7 +59,7 @@
             $("#save").on('click',function(e){
                 var cat_val = $("#category").val();
                 $("#myForm").ajaxForm({
-                    url: '{{ url("admin/pages/create") }}',
+                    url: '{{ url("page/create") }}',
                     type: 'post',
                     beforeSubmit:  function(data) {
                         if(cat_val == 0){
@@ -81,32 +81,24 @@
             });
         });
 
-        $.validate({
-            lang: 'en'
-        });
-
         function myForm(status,e) {
             $('#myForm')[0].reset();
             if(status == 'edit') {
 
                 $('#myModal .modal-title').html('Edit page '+e.data("row-title"));
-                $.getJSON("{{ url('admin/pages/get/?id=') }}" + e.data("row-id"), function (data) {
+                $.getJSON("{{ url('page/get/?id=') }}" + e.data("row-id"), function (data) {
                     //$('#summernote').text("");
                     $('#hidden_id').val(data.id);
                     $('#title').val(data.title);
                     $('#published').val(data.publish);
                     $('#summernote').trumbowyg('html',data.content);
-                    $('#datetimepicker').datetimepicker({
-                        defaultDate:data.publish_on
-                    });
                 });
                 selectBox('edit', e);
             }else{
                 $('#myModal .modal-title').html('Create New page ');
                 selectBox('create',e);
                 $('#summernote').trumbowyg('html',"");
-                $('#datetimepicker').datetimepicker({
-                });
+                
             }
 
             $('#myModal').modal('show');
@@ -118,10 +110,10 @@
                 if ($('#category option[value="'+$(this).val()+'"]').length) $(this).remove();
             });
 
-            $.get( "{{ url('admin/pages/category') }}", function( data ) {
+            $.get( "{{ url('page/categories') }}", function( data ) {
                 $("#category").append( "<option value='0'>-- Category --</option>");
                 $.each(data, function (index, element) {
-                    $("#category").append( "<option value='"+element.id+"'>"+element.name+"</option>");
+                    $("#category").append( "<option value='"+element.id+"'>"+element.title+"</option>");
                 });
                 if(status == 'edit'){
                     $("#category").val(e.data("row-category"));

@@ -124,6 +124,13 @@ $router->add('/page/category', array(
     'action'     => 'index'
 ));
 
+$router->add('/page/categories', array(
+    'namespace'  => 'Modules\Cms\Controllers',
+    'module'     => 'cms',
+    'controller' => 'pagecategory',
+    'action'     => 'all'
+));
+
 $router->add('/page/category/list', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',

@@ -20,7 +20,8 @@ class BlogController extends ControllerBase
 
     public function indexAction()
     {
-        $this->view->grid = "grid";
+        $this->view->js = 'users/userjs';
+        $this->wysiwyg  = 'trumbowy';
         $this->view->pick("index");
     }
 

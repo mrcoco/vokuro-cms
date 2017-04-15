@@ -25,6 +25,16 @@ class PageCategoryController extends ControllerBase
         $this->view->pick("page/index");
     }
 
+    public function allAction()
+    {
+        $this->view->disable();
+        $data = Page::find();
+        $response = new \Phalcon\Http\Response();
+        $response->setContentType('application/json', 'UTF-8');
+        $response->setJsonContent($data->toArray());
+        return $response->send();
+    }
+
     public function listAction()
     {
         $this->view->disable();

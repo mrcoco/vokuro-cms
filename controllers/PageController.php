@@ -21,7 +21,8 @@ class PageController extends ControllerBase
 
     public function indexAction()
     {
-        $this->view->grid = "grid";
+        $this->view->js = 'page/pagejs';
+        $this->view->wysiwyg  = 'trumbowy';
         $this->view->pick("page/index");
     }
 
@@ -57,6 +58,7 @@ class PageController extends ControllerBase
                 'no'    => $no,
                 'id'    => $item->id,
                 'title' => $item->title,
+                'name'      => $item->Users->name, 
                 'content'   => $item->content,
                 'status'    => $item->status,
                 'created'   => $item->created,
