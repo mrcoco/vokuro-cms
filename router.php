@@ -117,38 +117,38 @@ $router->add('/page/delete/{id:[0-9]+}', array(
 ));
 
 /**  Page Category $router */
-$router->add('/pagecat', array(
+$router->add('/page/category', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecat',
+    'controller' => 'pagecategory',
     'action'     => 'index'
 ));
 
-$router->add('/pagecat/list', array(
+$router->add('/page/category/list', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
     'controller' => 'pagecat',
     'action'     => 'list'
 ));
 
-$router->add('/pagecat/create', array(
+$router->add('/page/category/create', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecat',
+    'controller' => 'pagecategory',
     'action'     => 'create'
 ));
 
-$router->add('/pagecat/edit', array(
+$router->add('/page/category/edit', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecat',
+    'controller' => 'pagecategory',
     'action'     => 'edit'
 ));
 
-$router->add('/pagecat/delete/{id:[0-9]+}', array(
+$router->add('/page/category/delete/{id:[0-9]+}', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecat',
+    'controller' => 'pagecategory',
     'action'     => 'delete',
     'id'         => 1
 ));

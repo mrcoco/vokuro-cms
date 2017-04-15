@@ -12,7 +12,7 @@ use \Phalcon\Mvc\Model\Manager;
 use \Phalcon\Tag;
 use Vokuro\Controllers\ControllerBase;
 
-class PageController extends ControllerBase
+class PageCategoryController extends ControllerBase
 {
     public function initialize()
     {
@@ -29,8 +29,8 @@ class PageController extends ControllerBase
     {
         $this->view->disable();
         $arProp = array();
-        $current    = intval($this->request->getPost('current'));
-        $rowCount   = intval($this->request->getPost('rowCount'));
+        $current = intval($this->request->getPost('current'));
+        $rowCount = intval($this->request->getPost('rowCount'));
         $searchPhrase = $this->request->getPost('searchPhrase');
         $sort = $this->request->getPost('sort');
         if ($searchPhrase != '') {
@@ -55,11 +55,11 @@ class PageController extends ControllerBase
         foreach ($qry as $item){
             $arQry[] = array(
                 'no'    => $no,
-                'id'    => $item->id,
-                'title' => $item->title,
-                'content'   => $item->content,
-                'status'    => $item->status,
-                'created'   => $item->created,
+                    'id'    => $item->id,
+                	'title' => $item->title,
+		'content' => $item->content,
+		'status' => $item->status,
+	    'created' => $item->created,
             );
             $no++;
         }
@@ -120,16 +120,6 @@ class PageController extends ControllerBase
         $response->setContentType('application/json', 'UTF-8');
         $response->setJsonContent(array('_id' => $this->request->getPost("title"),'alert' => $alert, 'msg' => $msg ));
         return $response->send();
-
-    }
-
-    public function getAction()
-    {
-        $data = Page::findFirst($this->request->getQuery('id'));
-        $response = new \Phalcon\Http\Response();
-        $response->setContentType('application/json', 'UTF-8');
-        $response->setJsonContent($data->toArray());
-        return $response->send();
     }
 
     public function deleteAction($id)
@@ -149,4 +139,5 @@ class PageController extends ControllerBase
         $response->setJsonContent(array('_id' => $id,'alert' => $alert, 'msg' => $msg ));
         return $response->send();
     }
+
 }
