@@ -108,6 +108,13 @@ $router->add('/page/edit', array(
     'action'     => 'edit'
 ));
 
+$router->add('/page/get', array(
+    'namespace'  => 'Modules\Cms\Controllers',
+    'module'     => 'cms',
+    'controller' => 'page',
+    'action'     => 'get'
+));
+
 $router->add('/page/delete/{id:[0-9]+}', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',

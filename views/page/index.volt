@@ -1,3 +1,13 @@
+<style>
+#myModal .modal-dialog  {width:75%;}
+.trumbowyg-box.trumbowyg-editor-visible {
+  min-height: 150px;
+}
+
+.trumbowyg-editor {
+  min-height: 150px;
+}
+</style>
 <div>{{content()}}</div>
 <table id="grid-selection" class="table table-condensed table-hover table-striped">
         <thead>
