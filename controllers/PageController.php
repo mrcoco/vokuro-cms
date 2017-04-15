@@ -60,8 +60,9 @@ class PageController extends ControllerBase
                 'title' => $item->title,
                 'name'      => $item->Users->name, 
                 'content'   => $item->content,
-                'status'    => $item->status,
+                'publish'    => $item->publish,
                 'created'   => $item->created,
+                'categories_id' => $item->categories_id,
             );
             $no++;
         }
@@ -92,6 +93,9 @@ class PageController extends ControllerBase
             $msg .= "Edited Success ";
         }else{
             $alert = "error";
+            foreach ($data->getMessages() as $message) {
+                $msg .= $message." ";
+            }
             $msg .= "Edited failed";
         }
         $response = new \Phalcon\Http\Response();
@@ -103,26 +107,77 @@ class PageController extends ControllerBase
     public function editAction()
     {
         $this->view->disable();
-        $data = Page::findFirst($this->request->getPost('hidden_id'));
-        $data->title;
-		$data->content;
-		$data->status;
-	
+        $path   = $this->config->application->uploadDir;
+        $cat    = $this->request->getPost('category');
+        $page   = Page::findFirst($this->request->getPost('hidden_id'));
+        $msg    = "";
+        if($this->request->hasFiles() !== false) {
 
-        if (!$data->save()) {
+            $uploader = new \Uploader\Uploader([
+                'directory' =>  $this->config->application->uploadDir,
+                'mimes'     =>  [
+                    'image/gif',
+                    'image/jpeg',
+                    'image/png',
+                ],
+                'extensions'     =>  [
+                    'gif',
+                    'jpeg',
+                    'jpg',
+                    'png',
+                ],
+
+                'sanitize' => true,  // escape file & translate to latin
+                'hash'     => 'md5'
+            ]);
+
+            if($uploader->isValid() === true) {
+
+                $uploader->move();
+
+                $file   = $uploader->getInfo();
+                //$alert  = "sukses";
+                $msg    .= $file[0]['filename'];
+                $_file  = $file[0]['filename'];
+            }
+            else {
+                //$alert  = "error";
+                $msg    .= $uploader->getErrors();
+                $_file  = "";
+            }
+        }
+
+        $page->title = $this->request->getPost('title');
+        $page->slug = Tag::friendlyTitle($this->request->getPost("title"));
+        $page->content = $this->request->getPost('content');
+        $page->publish = $this->request->getPost('publish');
+        $page->publish_on = date('Y-m-d H:i:s',strtotime($this->request->getPost("publish_on")));
+        if($_file){
+            if(strlen($_file) > 0){
+                $img    = $page->image;
+                if (! empty($img)) {
+                    unlink($path.$img);
+                }
+                $page->image  = $_file;
+            }
+        }
+        if($cat){
+            $page->categories_id = $cat;
+        }
+        if($page->save()){
+            $alert = "sukses";
+            $msg .= "Edited Success ";
+        }else{
+            $alert = "error";
             foreach ($data->getMessages() as $message) {
-                $alert = "error";
                 $msg .= $message." ";
             }
-        }else{
-            $alert = "sukses";
-            $msg .= "page was created successfully";
+            $msg .= "Edited failed";
         }
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');
         $response->setJsonContent(array('_id' => $this->request->getPost("title"),'alert' => $alert, 'msg' => $msg ));
         return $response->send();
-
     }
 
     public function getAction()

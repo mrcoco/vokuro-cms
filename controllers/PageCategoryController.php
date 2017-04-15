@@ -8,6 +8,7 @@
 
 namespace Modules\Cms\Controllers;
 use Modules\Cms\Models\Page;
+use Modules\Cms\Models\PageCategory;
 use \Phalcon\Mvc\Model\Manager;
 use \Phalcon\Tag;
 use Vokuro\Controllers\ControllerBase;
@@ -28,7 +29,7 @@ class PageCategoryController extends ControllerBase
     public function allAction()
     {
         $this->view->disable();
-        $data = Page::find();
+        $data = PageCategory::find();
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');
         $response->setJsonContent($data->toArray());

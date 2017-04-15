@@ -17,7 +17,7 @@
                 },
                 "commands": function(column, row)
                 {
-                    return "<button type=\"button\" class=\"btn btn-sm btn-primary command-edit\" data-row-title=\""+row.title+"\" data-row-category=\""+row.category+"\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
+                    return "<button type=\"button\" class=\"btn btn-sm btn-primary command-edit\" data-row-title=\""+row.title+"\" data-row-category=\""+row.categories_id+"\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
                             "<button type=\"button\" class=\"btn btn-sm btn-primary command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></button>";
                 }
             }
@@ -31,7 +31,7 @@
             {
                 myForm('edit',$(this));
                 $("#myForm").ajaxForm({
-                    url: '{{ url("admin/pages/edit") }}',
+                    url: '{{ url("page/edit") }}',
                     type: 'post',
                     success: function(data) {
                         myAlert(data);
@@ -84,7 +84,6 @@
         function myForm(status,e) {
             $('#myForm')[0].reset();
             if(status == 'edit') {
-
                 $('#myModal .modal-title').html('Edit page '+e.data("row-title"));
                 $.getJSON("{{ url('page/get/?id=') }}" + e.data("row-id"), function (data) {
                     //$('#summernote').text("");
@@ -98,11 +97,8 @@
                 $('#myModal .modal-title').html('Create New page ');
                 selectBox('create',e);
                 $('#summernote').trumbowyg('html',"");
-                
             }
-
             $('#myModal').modal('show');
-
         }
 
         function selectBox(status,e) {
@@ -113,7 +109,7 @@
             $.get( "{{ url('page/categories') }}", function( data ) {
                 $("#category").append( "<option value='0'>-- Category --</option>");
                 $.each(data, function (index, element) {
-                    $("#category").append( "<option value='"+element.id+"'>"+element.title+"</option>");
+                    $("#category").append( "<option value='"+element.id+"'>"+element.name+"</option>");
                 });
                 if(status == 'edit'){
                     $("#category").val(e.data("row-category"));

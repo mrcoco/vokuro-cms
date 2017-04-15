@@ -42,7 +42,7 @@ class PageCategory extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'blog_categories';
+        return 'page_categories';
     }
 
     /**
