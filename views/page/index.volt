@@ -18,7 +18,7 @@
             <th data-column-id="content" data-width="35%" data-sortable="false">Content</th>
             <th data-column-id="name" data-sortable="false">User</th>
             <th data-column-id="publish" data-formatter="published" data-sortable="false">Publish</th>
-            <th data-column-id="created" data-order="desc">Created</th>
+            <th data-column-id="categories" data-sortable="false">Category</th>
             <!--<th data-column-id="updated" data-order="desc">Updated</th> -->
             <th data-column-id="commands" data-formatter="commands" data-sortable="false">Action</th>
         </tr>
@@ -60,19 +60,13 @@
                                 </select>
                             </div>
 
-                            <div class="col-xs-2">
+                            <div class="col-xs-4">
                                 <label>Publish </label>
                                 <select name="publish" id="published" class="form-control">
                                     <option>--Publish (Yes/No)--</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
                                 </select>
-                            </div>
-                            <div class="col-xs-2">
-                                <label>Publish On</label>
-                                <div >
-                                    <input id="datetimepicker" name="publish_on" data-format="dd/MM/yyyy hh:mm:ss" type="text" class="form-control"></input>
-                                </div>
                             </div>
 
                         </div>

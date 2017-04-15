@@ -22,8 +22,8 @@ class PageCategoryController extends ControllerBase
 
     public function indexAction()
     {
-        $this->view->grid = "grid";
-        $this->view->pick("page/index");
+        $this->view->js = "page/categoryjs";
+        $this->view->pick("page/category");
     }
 
     public function allAction()
@@ -50,7 +50,7 @@ class PageCategoryController extends ControllerBase
                 1 => "%".$searchPhrase."%"
             );
         }
-        $qryTotal = Page::find($arProp);
+        $qryTotal = PageCategory::find($arProp);
         $rowCount = $rowCount < 0 ? $qryTotal->count() : $rowCount;
         $arProp['order'] = "created DESC";
         $arProp['limit'] = $rowCount;
@@ -60,17 +60,15 @@ class PageCategoryController extends ControllerBase
                 $arProp['order'] = $k.' '.$v;
             }
         }
-        $qry = Page::find($arProp);
+        $qry = PageCategory::find($arProp);
         $arQry = array();
         $no =1;
         foreach ($qry as $item){
             $arQry[] = array(
                 'no'    => $no,
-                    'id'    => $item->id,
-                	'title' => $item->title,
-		'content' => $item->content,
-		'status' => $item->status,
-	    'created' => $item->created,
+                'id'    => $item->id,
+                'name' => $item->name,
+		        'slug' => $item->slug,
             );
             $no++;
         }
@@ -91,17 +89,18 @@ class PageCategoryController extends ControllerBase
     public function createAction()
     {
         $this->view->disable();
-        $data = new Page();
-        $data->title;
-		$data->content;
-		$data->status;
-	
+        $data = new PageCategory();
+        $data->name = $this->request->getPost('title');
+        $data->slug = Tag::friendlyTitle($this->request->getPost("title"));
         if($data->save()){
             $alert = "sukses";
-            $msg .= "Edited Success ";
+            $msg = "category was create successfully";
         }else{
             $alert = "error";
-            $msg .= "Edited failed";
+            $msg = "";
+            foreach ($data->getMessages() as $m){
+                $msg .= $m." ";
+            }
         }
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');
@@ -112,15 +111,13 @@ class PageCategoryController extends ControllerBase
     public function editAction()
     {
         $this->view->disable();
-        $data = Page::findFirst($this->request->getPost('hidden_id'));
-        $data->title;
-		$data->content;
-		$data->status;
-	
+        $data = PageCategory::findFirst($this->request->getPost('hidden_id'));
+        $data->name = $this->request->getPost('title');
+        $data->slug = Tag::friendlyTitle($this->request->getPost("title"));
 
         if (!$data->save()) {
+            $alert = "error";
             foreach ($data->getMessages() as $message) {
-                $alert = "error";
                 $msg .= $message." ";
             }
         }else{
@@ -136,11 +133,13 @@ class PageCategoryController extends ControllerBase
     public function deleteAction($id)
     {
         $this->view->disable();
-        $data   = Page::findFirstById($id);
+        $data   = PageCategory::findFirstById($id);
 
         if (!$data->delete()) {
-            $alert  = "error";
-            $msg    = $data->getMessages();
+            $alert = "error";
+            foreach ($data->getMessages() as $message) {
+                $msg .= $message." ";
+            }
         } else {
             $alert  = "sukses";
             $msg    = "Page was deleted ";

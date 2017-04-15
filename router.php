@@ -141,7 +141,7 @@ $router->add('/page/categories', array(
 $router->add('/page/category/list', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecat',
+    'controller' => 'pagecategory',
     'action'     => 'list'
 ));
 

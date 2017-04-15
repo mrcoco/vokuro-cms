@@ -63,6 +63,7 @@ class PageController extends ControllerBase
                 'publish'    => $item->publish,
                 'created'   => $item->created,
                 'categories_id' => $item->categories_id,
+                'categories'    => $item->Categories->name,
             );
             $no++;
         }
@@ -82,25 +83,74 @@ class PageController extends ControllerBase
 
     public function createAction()
     {
-        $this->view->disable();
-        $data = new Page();
-        $data->title;
-		$data->content;
-		$data->status;
-	
-        if($data->save()){
-            $alert = "sukses";
-            $msg .= "Edited Success ";
-        }else{
-            $alert = "error";
-            foreach ($data->getMessages() as $message) {
+       $this->view->disable();
+        if (!$this->request->isPost()) {
+            $this->dispatcher->forward([
+                'controller' => "pages",
+                'action' => 'index'
+            ]);
+
+            return;
+        }
+        $msg = "";
+       if($this->request->hasFiles() !== false) {
+
+            $uploader = new \Uploader\Uploader([
+                'directory' =>  $this->config->application->uploadDir,
+                'mimes'     =>  [
+                    'image/gif',
+                    'image/jpeg',
+                    'image/png',
+                ],
+                'extensions'     =>  [
+                    'gif',
+                    'jpeg',
+                    'jpg',
+                    'png',
+                ],
+
+                'sanitize' => true,  // escape file & translate to latin
+                'hash'     => 'md5'
+            ]);
+
+            if($uploader->isValid() === true) {
+
+                $uploader->move();
+
+                $file   = $uploader->getInfo();
+                $alert  = "sukses";
+                $msg    .= $file[0]['filename'];
+                $_file  = $file[0]['filename'];
+            }
+            else {
+                $alert  = "error";
+                $msg    .= $uploader->getErrors()[0];
+                $_file  = "";
+            }
+        }
+
+        $page = new Page();
+        $user = $this->auth->getIdentity();
+        $page->title = $this->request->getPost("title");
+        $page->slug = Tag::friendlyTitle($this->request->getPost("title"));
+        $page->image   = $_file;
+        $page->content = $this->request->getPost("content");
+        $page->publish = $this->request->getPost("publish");
+        $page->publish_on = date('Y-m-d H:i:s',strtotime($this->request->getPost("publish_on")));
+        $page->users_id = $user['id'];
+        $page->categories_id = $this->request->getPost("category");
+        if (!$page->save()) {
+            foreach ($page->getMessages() as $message) {
+                $alert = "error";
                 $msg .= $message." ";
             }
-            $msg .= "Edited failed";
+        }else{
+            $alert = "sukses";
+            $msg .= "page was created successfully";
         }
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');
-        $response->setJsonContent(array('_id' => $this->request->getPost("title"),'alert' => $alert, 'msg' => $msg ));
+        $response->setJsonContent(array('_id' => $this->request->getPost("title"),'alert' => $alert, 'msg' => $msg, 'error' => $uploader->getErrors() ));
         return $response->send();
     }
 
