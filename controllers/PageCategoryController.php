@@ -114,7 +114,7 @@ class PageCategoryController extends ControllerBase
         $data = PageCategory::findFirst($this->request->getPost('hidden_id'));
         $data->name = $this->request->getPost('title');
         $data->slug = Tag::friendlyTitle($this->request->getPost("title"));
-
+        $msg = "";
         if (!$data->save()) {
             $alert = "error";
             foreach ($data->getMessages() as $message) {

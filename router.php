@@ -43,38 +43,46 @@ $router->add('/blog/delete/{id:[0-9]+}', array(
 ));
 
 /**  Category $router */
-$router->add('/category', array(
+$router->add('/blog/category', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'category',
+    'controller' => 'blogcategory',
     'action'     => 'index'
 ));
 
-$router->add('/category/list', array(
+/**  Category $router */
+$router->add('/blog/categories', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'category',
+    'controller' => 'blogcategory',
+    'action'     => 'all'
+));
+
+$router->add('/blog/category/list', array(
+    'namespace'  => 'Modules\Cms\Controllers',
+    'module'     => 'cms',
+    'controller' => 'blogcategory',
     'action'     => 'list'
 ));
 
-$router->add('/category/create', array(
+$router->add('/blog/category/create', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'category',
+    'controller' => 'blogcategory',
     'action'     => 'create'
 ));
 
-$router->add('/category/edit', array(
+$router->add('/blog/category/edit', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'category',
+    'controller' => 'blogcategory',
     'action'     => 'edit'
 ));
 
-$router->add('/category/delete/{id:[0-9]+}', array(
+$router->add('/blog/category/delete/{id:[0-9]+}', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'category',
+    'controller' => 'blogcategory',
     'action'     => 'delete',
     'id'         => 1
 ));
