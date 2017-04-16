@@ -89,7 +89,7 @@ class Page extends \Phalcon\Mvc\Model
     {
         $this->belongsTo('users_id', 'Vokuro\Models\Users', 'id', ['alias' => 'Users']);
         $this->belongsTo('categories_id', 'Modules\Cms\Models\PageCategory', 'id', ['alias' => 'Categories']);
-        $this->belongsTo('id', 'Vokuro\Models\Views', 'page_id', ['alias' => 'Views']);
+        $this->belongsTo('id', 'Modules\Service\Models\Service', 'pageId', ['alias' => 'Service']);
         $this->addBehavior(
             new Timestampable(
                 [
