@@ -88,8 +88,7 @@ class Blog extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->belongsTo('users_id', 'Vokuro\Models\Users', 'id', ['alias' => 'Users']);
-        $this->belongsTo('categories_id', 'Vokuro\Models\PageCategory', 'id', ['alias' => 'Categories']);
-        $this->belongsTo('id', 'Vokuro\Models\Views', 'page_id', ['alias' => 'Views']);
+        $this->belongsTo('categories_id', 'Vokuro\Models\BlogCategory', 'id', ['alias' => 'Categories']);
         $this->addBehavior(
             new Timestampable(
                 [
@@ -113,29 +112,7 @@ class Blog extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'page';
-    }
-
-    /**
-     * Allows to query a set of records that match the specified conditions
-     *
-     * @param mixed $parameters
-     * @return Pages[]
-     */
-    public static function find($parameters = null)
-    {
-        return parent::find($parameters);
-    }
-
-    /**
-     * Allows to query the first record that match the specified conditions
-     *
-     * @param mixed $parameters
-     * @return Pages
-     */
-    public static function findFirst($parameters = null)
-    {
-        return parent::findFirst($parameters);
+        return 'blog';
     }
 
 }

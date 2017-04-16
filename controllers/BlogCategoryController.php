@@ -50,7 +50,7 @@ class BlogCategoryController extends ControllerBase
                 1 => "%".$searchPhrase."%"
             );
         }
-        $qryTotal = PageCategory::find($arProp);
+        $qryTotal = BlogCategory::find($arProp);
         $rowCount = $rowCount < 0 ? $qryTotal->count() : $rowCount;
         $arProp['order'] = "created DESC";
         $arProp['limit'] = $rowCount;
@@ -60,7 +60,7 @@ class BlogCategoryController extends ControllerBase
                 $arProp['order'] = $k.' '.$v;
             }
         }
-        $qry = PageCategory::find($arProp);
+        $qry = BlogCategory::find($arProp);
         $arQry = array();
         $no =1;
         foreach ($qry as $item){
@@ -89,7 +89,7 @@ class BlogCategoryController extends ControllerBase
     public function createAction()
     {
         $this->view->disable();
-        $data = new PageCategory();
+        $data = new BlogCategory();
         $data->name = $this->request->getPost('title');
         $data->slug = Tag::friendlyTitle($this->request->getPost("title"));
         if($data->save()){
@@ -111,7 +111,7 @@ class BlogCategoryController extends ControllerBase
     public function editAction()
     {
         $this->view->disable();
-        $data = PageCategory::findFirst($this->request->getPost('hidden_id'));
+        $data = BlogCategory::findFirst($this->request->getPost('hidden_id'));
         $data->name = $this->request->getPost('title');
         $data->slug = Tag::friendlyTitle($this->request->getPost("title"));
         $msg = "";
@@ -122,7 +122,7 @@ class BlogCategoryController extends ControllerBase
             }
         }else{
             $alert = "sukses";
-            $msg .= "page was created successfully";
+            $msg .= "category was created successfully";
         }
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');
@@ -133,7 +133,7 @@ class BlogCategoryController extends ControllerBase
     public function deleteAction($id)
     {
         $this->view->disable();
-        $data   = PageCategory::findFirstById($id);
+        $data   = BlogCategory::findFirstById($id);
 
         if (!$data->delete()) {
             $alert = "error";
@@ -142,7 +142,7 @@ class BlogCategoryController extends ControllerBase
             }
         } else {
             $alert  = "sukses";
-            $msg    = "Page was deleted ";
+            $msg    = "category was deleted ";
         }
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');

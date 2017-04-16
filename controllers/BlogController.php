@@ -82,7 +82,7 @@ class BlogController extends ControllerBase
         $this->view->disable();
         if (!$this->request->isPost()) {
             $this->dispatcher->forward([
-                'controller' => "pages",
+                'controller' => "blog",
                 'action' => 'index'
             ]);
 
