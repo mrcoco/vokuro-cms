@@ -42,7 +42,7 @@
             });
         });
 
-        $(".actionBar").append(" <div class='btn btn-primary' id='create' class='command-add'><span class=\"fa fa-plus-square-o\"></span> New blog</div>");
+        $(".actionBar").append(" <div class='btn btn-primary' id='create' class='command-add'><span class=\"fa fa-plus-square-o\"></span> New Category</div>");
 
         $("#create").on('click',function (e) {
             $('#myModal .modal-title').html('Create New Category ');

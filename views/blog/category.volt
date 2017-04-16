@@ -3,7 +3,7 @@
         width: 25%; /* or whatever you wish */
     }
 </style>
-<div style="width: 1024px; margin: 0 auto;">
+<div>
     <table id="grid-selection" class="table table-condensed table-hover table-striped">
         <thead>
         <tr>
