@@ -9,6 +9,7 @@
 }
 </style>
 <div>{{content()}}</div>
+<div>
 <table id="grid-selection" class="table table-condensed table-hover table-striped">
         <thead>
         <tr>
@@ -23,7 +24,8 @@
             <th data-column-id="commands" data-formatter="commands" data-sortable="false">Action</th>
         </tr>
         </thead>
-    </table>
+</table>
+</div>
 <div id="myModal" class="modal fade modal-wide" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
