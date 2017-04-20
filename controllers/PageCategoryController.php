@@ -7,11 +7,9 @@
  */
 
 namespace Modules\Cms\Controllers;
-use Modules\Cms\Models\Page;
 use Modules\Cms\Models\PageCategory;
-use \Phalcon\Mvc\Model\Manager;
 use \Phalcon\Tag;
-use Vokuro\Controllers\ControllerBase;
+use Modules\Frontend\Controllers\ControllerBase;
 
 class PageCategoryController extends ControllerBase
 {

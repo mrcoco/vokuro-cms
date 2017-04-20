@@ -7,11 +7,9 @@
  */
 
 namespace Modules\Cms\Controllers;
-use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\BlogCategory;
-use \Phalcon\Mvc\Model\Manager;
 use \Phalcon\Tag;
-use Vokuro\Controllers\ControllerBase;
+use Modules\Frontend\Controllers\ControllerBase;
 
 class BlogCategoryController extends ControllerBase
 {

@@ -8,9 +8,8 @@
 
 namespace Modules\Cms\Controllers;
 use Modules\Cms\Models\Page;
-use \Phalcon\Mvc\Model\Manager;
 use \Phalcon\Tag;
-use Vokuro\Controllers\ControllerBase;
+use Modules\Frontend\Controllers\ControllerBase;
 
 class PageController extends ControllerBase
 {

@@ -8,9 +8,8 @@
 
 namespace Modules\Cms\Controllers;
 use Modules\Cms\Models\Blog;
-use \Phalcon\Mvc\Model\Manager;
 use \Phalcon\Tag;
-use Vokuro\Controllers\ControllerBase;
+use Modules\Frontend\Controllers\ControllerBase;
 class BlogController extends ControllerBase
 {
     public function initialize()
