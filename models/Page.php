@@ -87,7 +87,7 @@ class Page extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->belongsTo('users_id', 'Vokuro\Models\Users', 'id', ['alias' => 'Users']);
+        $this->belongsTo('users_id', 'Modules\User\Models\Users', 'id', ['alias' => 'Users']);
         $this->belongsTo('categories_id', 'Modules\Cms\Models\PageCategory', 'id', ['alias' => 'Categories']);
         $this->belongsTo('id', 'Modules\Service\Models\Service', 'pageId', ['alias' => 'Service']);
         $this->addBehavior(

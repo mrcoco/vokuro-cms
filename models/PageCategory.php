@@ -32,7 +32,7 @@ class PageCategory extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->hasMany('id', 'Vokuro\Models\Page', 'categories_id', ['alias' => 'Page']);
+        $this->hasMany('id', 'Modules\Cms\Models\Page', 'categories_id', ['alias' => 'Page']);
     }
 
     /**

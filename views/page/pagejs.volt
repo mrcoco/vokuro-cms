@@ -56,7 +56,7 @@
 
         $("#create").on('click',function (e) {
             myForm('create',e);
-            $("#save").on('click',function(e){
+            //$("#save").on('click',function(e){
                 var cat_val = $("#category").val();
                 $("#myForm").ajaxForm({
                     url: '{{ url("page/create") }}',
@@ -78,7 +78,7 @@
                         }, 10000);
                     }
                 });
-            });
+            //});
         });
 
         function myForm(status,e) {

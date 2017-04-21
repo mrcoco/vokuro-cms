@@ -32,7 +32,7 @@ class BlogCategory extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->hasMany('id', 'Vokuro\Models\Blog', 'categories_id', ['alias' => 'Blog']);
+        $this->hasMany('id', 'Modules\Cms\Models\Blog', 'categories_id', ['alias' => 'Blog']);
     }
 
     /**
