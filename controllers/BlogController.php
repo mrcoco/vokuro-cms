@@ -91,7 +91,7 @@ class BlogController extends ControllerBase
        if($this->request->hasFiles() !== false) {
 
             $uploader = new \Uploader\Uploader([
-                'directory' =>  $this->config->application->uploadDir,
+                'directory' =>  $this->config->application->uploadDir."page/",
                 'mimes'     =>  [
                     'image/gif',
                     'image/jpeg',
@@ -153,7 +153,45 @@ class BlogController extends ControllerBase
     {
         $this->view->disable();
         $data = Blog::findFirst($this->request->getPost('hidden_id'));
-        	$data->title;
+
+        if($this->request->hasFiles() !== false) {
+            if (! empty($image->file_name)) {
+                unlink($this->config->application->uploadDir."page/".$image->file_name);
+            }
+            $uploader = new \Uploader\Uploader([
+                'directory' =>  $this->config->application->uploadDir."page/",
+                'mimes'     =>  [
+                    'image/gif',
+                    'image/jpeg',
+                    'image/png',
+                ],
+                'extensions'     =>  [
+                    'gif',
+                    'jpeg',
+                    'jpg',
+                    'png',
+                ],
+
+                'sanitize' => true,  // escape file & translate to latin
+                'hash'     => 'md5'
+            ]);
+
+            if($uploader->isValid() === true) {
+
+                $uploader->move();
+
+                $file   = $uploader->getInfo();
+                //$alert  = "sukses";
+                $msg    .= $file[0]['filename'];
+                $_file  = $file[0]['filename'];
+            }
+            else {
+                //$alert  = "error";
+                $msg    .= $uploader->getErrors()[0];
+                $_file  = "";
+            }
+        }
+        $data->title;
 		$data->content;
 		$data->status;
 	
@@ -165,7 +203,7 @@ class BlogController extends ControllerBase
             }
         }else{
             $alert = "sukses";
-            $msg .= "page was created successfully";
+            $msg .= "blog was created successfully";
         }
         $response = new \Phalcon\Http\Response();
         $response->setContentType('application/json', 'UTF-8');
