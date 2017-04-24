@@ -34,6 +34,13 @@ $router->add('/blog/edit', array(
     'action'     => 'edit'
 ));
 
+$router->add('/blog/get', array(
+    'namespace'  => 'Modules\Cms\Controllers',
+    'module'     => 'cms',
+    'controller' => 'blog',
+    'action'     => 'get'
+));
+
 $router->add('/blog/delete/{id:[0-9]+}', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
