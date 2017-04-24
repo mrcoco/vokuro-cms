@@ -59,8 +59,9 @@ class BlogController extends ControllerBase
         		'content'     => $item->content,
         		'status'      => $item->status,
         	    'created'     => $item->created,
-                'user_id'   => $item->user_id,
-                'name'     => $item->Users->name, 
+                'publish'       => $item->publish,
+                'user_id'       => $item->user_id,
+                'name'          => $item->Users->name, 
                 'categories_id' => $item->categories_id,
                 'categories'    => $item->Categories->name,
             );
