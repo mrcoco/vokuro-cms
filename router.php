@@ -142,14 +142,14 @@ $router->add('/page/category', array(
 $router->add('/page/categories', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecategory',
+    'controller' => 'page_category',
     'action'     => 'all'
 ));
 
 $router->add('/page/category/list', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecategory',
+    'controller' => 'page_category',
     'action'     => 'list'
 ));
 
