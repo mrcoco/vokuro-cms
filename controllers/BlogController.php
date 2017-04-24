@@ -96,7 +96,7 @@ class BlogController extends ControllerBase
        if($this->request->hasFiles() !== false) {
 
             $uploader = new \Uploader\Uploader([
-                'directory' =>  $this->config->application->uploadDir."page/",
+                'directory' =>  $this->config->application->uploadDir."blog/",
                 'mimes'     =>  [
                     'image/gif',
                     'image/jpeg',
@@ -161,10 +161,10 @@ class BlogController extends ControllerBase
 
         if($this->request->hasFiles() !== false) {
             if (! empty($image->file_name)) {
-                unlink($this->config->application->uploadDir."page/".$image->file_name);
+                unlink($this->config->application->uploadDir."blog/".$image->file_name);
             }
             $uploader = new \Uploader\Uploader([
-                'directory' =>  $this->config->application->uploadDir."page/",
+                'directory' =>  $this->config->application->uploadDir."blog/",
                 'mimes'     =>  [
                     'image/gif',
                     'image/jpeg',

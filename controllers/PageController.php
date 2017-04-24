@@ -95,7 +95,7 @@ class PageController extends ControllerBase
        if($this->request->hasFiles() !== false) {
 
             $uploader = new \Uploader\Uploader([
-                'directory' =>  $this->config->application->uploadDir,
+                'directory' =>  $this->config->application->uploadDir."page/",
                 'mimes'     =>  [
                     'image/gif',
                     'image/jpeg',
@@ -156,14 +156,14 @@ class PageController extends ControllerBase
     public function editAction()
     {
         $this->view->disable();
-        $path   = $this->config->application->uploadDir;
+        $path   = $this->config->application->uploadDir."page/";
         $cat    = $this->request->getPost('category');
         $page   = Page::findFirst($this->request->getPost('hidden_id'));
         $msg    = "";
         if($this->request->hasFiles() !== false) {
 
             $uploader = new \Uploader\Uploader([
-                'directory' =>  $this->config->application->uploadDir,
+                'directory' =>  $this->config->application->uploadDir."page/",
                 'mimes'     =>  [
                     'image/gif',
                     'image/jpeg',
