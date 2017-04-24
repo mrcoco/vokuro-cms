@@ -46,7 +46,7 @@ $router->add('/blog/delete/{id:[0-9]+}', array(
 $router->add('/blog/category', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'BlogCategory',
+    'controller' => 'Blog_Category',
     'action'     => 'index'
 ));
 
@@ -54,35 +54,35 @@ $router->add('/blog/category', array(
 $router->add('/blog/categories', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'BlogCategory',
+    'controller' => 'Blog_Category',
     'action'     => 'all'
 ));
 
 $router->add('/blog/category/list', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'BlogCategory',
+    'controller' => 'Blog_Category',
     'action'     => 'list'
 ));
 
 $router->add('/blog/category/create', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'BlogCategory',
+    'controller' => 'Blog_Category',
     'action'     => 'create'
 ));
 
 $router->add('/blog/category/edit', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'BlogCategory',
+    'controller' => 'Blog_Category',
     'action'     => 'edit'
 ));
 
 $router->add('/blog/category/delete/{id:[0-9]+}', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'BlogCategory',
+    'controller' => 'Blog_Category',
     'action'     => 'delete',
     'id'         => 1
 ));
@@ -135,7 +135,7 @@ $router->add('/page/delete/{id:[0-9]+}', array(
 $router->add('/page/category', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecategory',
+    'controller' => 'page_category',
     'action'     => 'index'
 ));
 
@@ -156,21 +156,21 @@ $router->add('/page/category/list', array(
 $router->add('/page/category/create', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecategory',
+    'controller' => 'page_category',
     'action'     => 'create'
 ));
 
 $router->add('/page/category/edit', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecategory',
+    'controller' => 'page_category',
     'action'     => 'edit'
 ));
 
 $router->add('/page/category/delete/{id:[0-9]+}', array(
     'namespace'  => 'Modules\Cms\Controllers',
     'module'     => 'cms',
-    'controller' => 'pagecategory',
+    'controller' => 'page_category',
     'action'     => 'delete',
     'id'         => 1
 ));
