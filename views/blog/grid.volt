@@ -38,7 +38,7 @@
                         $("#grid-selection").bootgrid("reload");
                         setTimeout(function(){
                             $('#myModal').modal('hide')
-                        }, 10000);
+                        }, 5000);
                     }
                 });
 
@@ -75,7 +75,7 @@
                         grid.bootgrid("reload");
                         setTimeout(function(){
                             $('#myModal').modal('hide');
-                        }, 10000);
+                        }, 5000);
                     }
                 });
             //});
