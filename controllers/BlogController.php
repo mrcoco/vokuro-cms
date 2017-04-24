@@ -54,11 +54,15 @@ class BlogController extends ControllerBase
         foreach ($qry as $item){
             $arQry[] = array(
                 'no'    => $no,
-                    'id'    => $item->id,
-                	'title' => $item->title,
-		'content' => $item->content,
-		'status' => $item->status,
-	    'created' => $item->created,
+                'id'    => $item->id,
+            	'title' => $item->title,
+        		'content'     => $item->content,
+        		'status'      => $item->status,
+        	    'created'     => $item->created,
+                'user_id'   => $item->user_id,
+                'name'     => $item->Users->name, 
+                'categories_id' => $item->categories_id,
+                'categories'    => $item->Categories->name,
             );
             $no++;
         }
