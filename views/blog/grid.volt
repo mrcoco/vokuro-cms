@@ -52,7 +52,7 @@
             });
         });
 
-        $(".actionBar").append(" <div class='btn btn-primary' id='create' class='command-add'><span class=\"fa fa-plus-square-o\"></span> New Page</div>");
+        $(".actionBar").append(" <div class='btn btn-primary' id='create' class='command-add'><span class=\"fa fa-plus-square-o\"></span> New Content</div>");
 
         $("#create").on('click',function (e) {
             myForm('create',e);
