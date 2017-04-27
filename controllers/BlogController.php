@@ -160,9 +160,7 @@ class BlogController extends ControllerBase
         $data = Blog::findFirst($this->request->getPost('hidden_id'));
 
         if($this->request->hasFiles() !== false) {
-            if (! empty($image->file_name)) {
-                unlink($this->config->application->uploadDir."blog/".$image->file_name);
-            }
+
             $uploader = new \Uploader\Uploader([
                 'directory' =>  $this->config->application->uploadDir."blog/",
                 'mimes'     =>  [
@@ -199,7 +197,15 @@ class BlogController extends ControllerBase
         $data->title;
 		$data->content;
 		$data->status;
-	
+        if($_file){
+            if(strlen($_file) > 0){
+                $img    = $data->image;
+                if (! empty($img)) {
+                    unlink($this->config->application->uploadDir."blog/".$img);
+                }
+                $page->image  = $_file;
+            }
+        }
 
         if (!$data->save()) {
             foreach ($data->getMessages() as $message) {
