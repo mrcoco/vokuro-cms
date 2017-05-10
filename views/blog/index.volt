@@ -9,22 +9,35 @@
 }
 </style>
 <div>{{content()}}</div>
-<div>
-<table id="grid-selection" class="table table-condensed table-hover table-striped">
-        <thead>
-        <tr>
-            <th data-column-id="no" data-type="numeric" data-width="5%" data-sortable="false">no</th>
-            <th data-column-id="title" data-sortable="false">Title</th>
-            {#<th data-column-id="slug" data-sortable="false">Slug</th>#}
-            <th data-column-id="content" data-width="35%" data-sortable="false">Content</th>
-            <th data-column-id="name" data-sortable="false">User</th>
-            <th data-column-id="publish" data-formatter="published" data-sortable="false">Publish</th>
-            <th data-column-id="categories" data-sortable="false">Category</th>
-            <!--<th data-column-id="updated" data-order="desc">Updated</th> -->
-            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Action</th>
-        </tr>
-        </thead>
-</table>
+<div class="box">
+    <header class="bg-alizarin text-white">
+        <h4>Manage Blog</h4>
+        <!-- begin box-tools -->
+        <div class="box-tools">
+            <a class="fa fa-fw fa-minus" href="#" data-box="collapse"></a>
+            <a class="fa fa-fw fa-square-o" href="#" data-fullscreen="box"></a>
+            <a class="fa fa-fw fa-refresh" href="#" data-box="refresh"></a>
+            <a class="fa fa-fw fa-times" href="#" data-box="close"></a>
+        </div>
+        <!-- END: box-tools -->
+    </header>
+    <div class="box-body collapse in">
+    <table id="grid-selection" class="table table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th data-column-id="no" data-type="numeric" data-width="5%" data-sortable="false">no</th>
+                <th data-column-id="title" data-sortable="false">Title</th>
+                {#<th data-column-id="slug" data-sortable="false">Slug</th>#}
+                <th data-column-id="content" data-width="35%" data-sortable="false">Content</th>
+                <th data-column-id="name" data-sortable="false">User</th>
+                <th data-column-id="publish" data-formatter="published" data-sortable="false">Publish</th>
+                <th data-column-id="categories" data-sortable="false">Category</th>
+                <!--<th data-column-id="updated" data-order="desc">Updated</th> -->
+                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Action</th>
+            </tr>
+            </thead>
+    </table>
+    </div>
 </div>
 <div id="myModal" class="modal fade modal-wide" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">

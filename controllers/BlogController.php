@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by Vokuro-Cli.
+ * Created by Phalms-Cli.
  * User: dwiagus
  * Date: !data
  * Time: 09:01:27
@@ -14,7 +14,14 @@ class BlogController extends ControllerBase
 {
     public function initialize()
     {
-
+        $this->tag->setTitle('Manage your Blog');
+        $this->assets
+            ->collection('footer')
+            ->setTargetPath("themes/admin/assets/js/combined-blog.js")
+            ->setTargetUri("themes/admin/assets/js/combined-blog.js")
+            ->join(true)
+            ->addJs($this->config->application->modulesDir."cms/views/js/main.js")
+            ->addFilter(new \Phalcon\Assets\Filters\Jsmin());
     }
 
     public function indexAction()
