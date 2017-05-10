@@ -15,13 +15,17 @@ class PageController extends ControllerBase
 {
     public function initialize()
     {
-
+        $this->assets
+            ->collection('footer')
+            ->setTargetPath("themes/admin/assets/js/combined-page.js")
+            ->setTargetUri("themes/admin/assets/js/combined-page.js")
+            ->join(true)
+            ->addJs($this->config->application->modulesDir."cms/views/js/page.js")
+            ->addFilter(new \Phalcon\Assets\Filters\Jsmin());
     }
 
     public function indexAction()
     {
-        $this->view->js = 'page/pagejs';
-        $this->view->wysiwyg  = 'trumbowy';
         $this->view->pick("page/index");
     }
 

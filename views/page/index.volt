@@ -8,8 +8,21 @@
   min-height: 150px;
 }
 </style>
-<div>{{content()}}</div>
-<table id="grid-selection" class="table table-condensed table-hover table-striped">
+<div class="box">
+    <header class="bg-alizarin text-white">
+        <h4>Manage Blog</h4>
+        <!-- begin box-tools -->
+        <div class="box-tools">
+            <a class="fa fa-fw fa-minus" href="#" data-box="collapse"></a>
+            <a class="fa fa-fw fa-square-o" href="#" data-fullscreen="box"></a>
+            <a class="fa fa-fw fa-refresh" href="#" data-box="refresh"></a>
+            <a class="fa fa-fw fa-times" href="#" data-box="close"></a>
+        </div>
+        <!-- END: box-tools -->
+    </header>
+    <div class="box-body collapse in">
+    <div>{{content()}}</div>
+    <table id="grid-selection" class="table table-condensed table-hover table-striped">
         <thead>
         <tr>
             <th data-column-id="no" data-type="numeric" data-width="5%" data-sortable="false">no</th>
@@ -24,6 +37,8 @@
         </tr>
         </thead>
     </table>
+    </div>
+</div>
 <div id="myModal" class="modal fade modal-wide" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

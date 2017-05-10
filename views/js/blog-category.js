@@ -2,9 +2,12 @@
     $(document).ready(function(){
         var grid = $("#grid-selection").bootgrid({
             ajax: true,
-            url: "blog/category/list",
+            url: "category/list",
             selection: true,
             multiSelect: true,
+            templates: {
+                header:"<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-6 actionBar\"><div class=\"{{css.search}}\"></div></div><div class=\"col-sm-6\"><div class=\"{{css.actions}}\"></div> <div class='btn btn-primary' id='create' class='command-add'> <span class=\"fa fa-plus-square-o\"></span> New Category</div></div></div></div>",
+            },
             formatters: {
                 "commands": function(column, row)
                 {
@@ -25,7 +28,7 @@
                 $('#result-form').html("");
                 $('#myModal').modal('show');
                 $("#myForm").ajaxForm({
-                    url: '{{ url("blog/category/edit") }}',
+                    url: 'category/edit',
                     type: 'post',
                     success: function(data) {
                         myAlert(data);
@@ -35,14 +38,12 @@
 
             }).end().find(".command-delete").on("click", function(e)
             {
-                $.get( "blog/category/delete/"+ $(this).data("row-id"), function( data ) {
+                $.get( "category/delete/"+ $(this).data("row-id"), function( data ) {
                     myAlert(data);
                     $("#grid-selection").bootgrid("reload");
                 });
             });
         });
-
-        $(".actionBar").append(" <div class='btn btn-primary' id='create' class='command-add'><span class=\"fa fa-plus-square-o\"></span> New Category</div>");
 
         $("#create").on('click',function (e) {
             $('#myModal .modal-title').html('Create New Category ');
@@ -50,7 +51,7 @@
             $('.modal-body').find('textarea,input').val('');
             $('#myModal').modal('show');
             $("#myForm").ajaxForm({
-                url: 'blog/category/create',
+                url: 'category/create',
                 type: 'post',
                 success: function(data) {
                     myAlert(data);

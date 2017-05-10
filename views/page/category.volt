@@ -3,17 +3,30 @@
         width: 25%; /* or whatever you wish */
     }
 </style>
-<div style="width: 1024px; margin: 0 auto;">
-    <table id="grid-selection" class="table table-condensed table-hover table-striped">
-        <thead>
-        <tr>
-            <th data-column-id="no" data-type="numeric" data-identifier="true" >NO</th>
-            <th data-column-id="name" data-order="desc">Title</th>
-            <th data-column-id="slug">Slug</th>
-            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Action</th>
-        </tr>
-        </thead>
-    </table>
+<div class="box">
+    <header class="bg-alizarin text-white">
+        <h4>Manage Category</h4>
+        <!-- begin box-tools -->
+        <div class="box-tools">
+            <a class="fa fa-fw fa-minus" href="#" data-box="collapse"></a>
+            <a class="fa fa-fw fa-square-o" href="#" data-fullscreen="box"></a>
+            <a class="fa fa-fw fa-refresh" href="#" data-box="refresh"></a>
+            <a class="fa fa-fw fa-times" href="#" data-box="close"></a>
+        </div>
+        <!-- END: box-tools -->
+    </header>
+    <div class="box-body collapse in">
+        <table id="grid-selection" class="table table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th data-column-id="no" data-type="numeric" data-identifier="true" >NO</th>
+                <th data-column-id="name" data-order="desc">Title</th>
+                <th data-column-id="slug">Slug</th>
+                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Action</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
 </div>
 <div id="myModal" class="modal fade modal-wide" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">

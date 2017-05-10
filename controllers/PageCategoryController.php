@@ -15,12 +15,17 @@ class PageCategoryController extends ControllerBase
 {
     public function initialize()
     {
-
+        $this->assets
+            ->collection('footer')
+            ->setTargetPath("themes/admin/assets/js/combined-page-category.js")
+            ->setTargetUri("themes/admin/assets/js/combined-page-category.js")
+            ->join(true)
+            ->addJs($this->config->application->modulesDir."cms/views/js/page-category.js")
+            ->addFilter(new \Phalcon\Assets\Filters\Jsmin());
     }
 
     public function indexAction()
     {
-        $this->view->js = "page/categoryjs";
         $this->view->pick("page/category");
     }
 

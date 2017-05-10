@@ -20,7 +20,7 @@ class BlogController extends ControllerBase
             ->setTargetPath("themes/admin/assets/js/combined-blog.js")
             ->setTargetUri("themes/admin/assets/js/combined-blog.js")
             ->join(true)
-            ->addJs($this->config->application->modulesDir."cms/views/js/main.js")
+            ->addJs($this->config->application->modulesDir."cms/views/js/page.js")
             ->addFilter(new \Phalcon\Assets\Filters\Jsmin());
     }
 
