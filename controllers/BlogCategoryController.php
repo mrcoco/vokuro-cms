@@ -15,12 +15,17 @@ class BlogCategoryController extends ControllerBase
 {
     public function initialize()
     {
-
+        $this->assets
+            ->collection('footer')
+            ->setTargetPath("themes/admin/assets/js/combined-category.js")
+            ->setTargetUri("themes/admin/assets/js/combined-category.js")
+            ->join(true)
+            ->addJs($this->config->application->modulesDir."cms/views/js/blog-category.js")
+            ->addFilter(new \Phalcon\Assets\Filters\Jsmin());
     }
 
     public function indexAction()
     {
-        $this->view->js = "blog/categoryjs";
         $this->view->pick("blog/category");
     }
 

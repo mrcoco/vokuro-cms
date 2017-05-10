@@ -5,7 +5,7 @@
 </style>
 <div class="box">
 <header class="bg-alizarin text-white">
-    <h4>Manage Blog</h4>
+    <h4>Manage Category</h4>
     <!-- begin box-tools -->
     <div class="box-tools">
         <a class="fa fa-fw fa-minus" href="#" data-box="collapse"></a>
